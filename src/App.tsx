@@ -69,7 +69,6 @@ const App = () => {
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiConfig>
-    </WagmiProvider>
   );
 };
 
