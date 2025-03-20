@@ -41,6 +41,7 @@ const App = () => {
   }, [isAuthenticated, fetchUser]);
 
   return (
+    
     <WagmiConfig config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider chains={chains}>
@@ -68,6 +69,7 @@ const App = () => {
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiConfig>
+    </WagmiProvider>
   );
 };
 

@@ -31,7 +31,7 @@ const mockEvents: TicketEvent[] = [
     attendees: 128,
     maxAttendees: 200,
     price: 15,
-    image: '/placeholder.svg',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-OkyjL5dz3wBEo7Ur0pvBW-8-5f__ECvHFQ&s',
     tokenGated: true,
     status: 'upcoming'
   },
@@ -45,7 +45,7 @@ const mockEvents: TicketEvent[] = [
     attendees: 75,
     maxAttendees: 150,
     price: 20,
-    image: '/placeholder.svg',
+    image: 'https://www.xrtoday.com/wp-content/uploads/2022/10/What_Web3_Going_2023.jpg',
     tokenGated: false,
     status: 'upcoming'
   },
@@ -59,7 +59,7 @@ const mockEvents: TicketEvent[] = [
     attendees: 200,
     maxAttendees: 200,
     price: 25,
-    image: '/placeholder.svg',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6J--lfg8pDE6MT7nnteUz4HjyBjd8RL7Hjg&s',
     tokenGated: true,
     status: 'ended'
   },
@@ -73,7 +73,7 @@ const mockEvents: TicketEvent[] = [
     attendees: 45,
     maxAttendees: 100,
     price: 10,
-    image: '/placeholder.svg',
+    image: 'https://blog.delivermytune.com/wp-content/uploads/2024/11/dj-party-meaning.png',
     tokenGated: false,
     status: 'live'
   }
@@ -128,7 +128,7 @@ const TicketCard: React.FC<{ event: TicketEvent }> = ({ event }) => {
         </div>
         
         <div className="flex justify-between items-center mt-2">
-          <p className="font-orbitron text-lg font-medium">${event.price}</p>
+          <p className="font-orbitron text-lg font-medium">{event.price}$VYB</p>
           <Button 
             className={isAvailable ? "bg-white text-black hover:bg-white/90" : "bg-gray-700 text-gray-300 cursor-not-allowed"}
             disabled={!isAvailable}
