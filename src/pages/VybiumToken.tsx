@@ -18,7 +18,7 @@ const VybiumToken: React.FC = () => {
                 <img 
                   src="/lovable-uploads/e176984a-2f50-4512-862c-de219621bd47.png"
                   alt="VYBium Token" 
-                  className="w-32 h-32 md:w-40 md:h-40 animate-pulse hover:rotate-12 transition-transform duration-300" 
+                  className="w-32 h-32 md:w-40 md:h-40 animate-pulse hover:rotate-12 rounded-full transition-transform duration-300" 
                 />
               </div>
             </div>

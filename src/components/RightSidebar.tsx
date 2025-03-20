@@ -13,7 +13,7 @@ const RightSidebar: React.FC = () => {
 
   // Sample upcoming events
   const upcomingEvents = [
-    { id: 1, title: 'NFT Drop: Cyber Collection', time: '2h 30m', creator: 'CryptoArtist' },
+    { id: 1, title: 'NFT Drop: Cyber Collection', time: '2d 3h', creator: 'CryptoArtist' },
     { id: 2, title: 'Live AMA Session', time: '1d 4h', creator: 'TechInfluencer' },
     { id: 3, title: 'Token Staking Event', time: '3d', creator: 'VYB-R8R Team' },
   ];

@@ -18,7 +18,7 @@ const VybiumBalanceCard: React.FC<VybiumBalanceCardProps> = ({
           <img 
             src="/lovable-uploads/e176984a-2f50-4512-862c-de219621bd47.png"
             alt="VYBium Token" 
-            className="w-20 h-20 animate-pulse hover:rotate-12 transition-transform duration-300" 
+            className="w-20 h-20 border rounded-full animate-pulse hover:rotate-12 transition-transform duration-300" 
           />
           <span className="absolute -top-1 -right-1">
             <Sparkles className="h-5 w-5 text-yellow-400" />

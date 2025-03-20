@@ -55,7 +55,7 @@ const VybiumLiquidityForm: React.FC = () => {
           <img 
             src="/lovable-uploads/e176984a-2f50-4512-862c-de219621bd47.png"
             alt="VYBium Token" 
-            className="w-12 h-12 hover:rotate-12 transition-transform duration-300" 
+            className="w-12 h-12 hover:rotate-12 rounded-full transition-transform duration-300" 
           />
           <div className="absolute -right-4 -bottom-1 bg-green-500 rounded-full p-1">
             <BarChart className="h-4 w-4 text-white" />

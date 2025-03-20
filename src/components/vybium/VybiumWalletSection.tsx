@@ -36,7 +36,7 @@ const VybiumWalletSection: React.FC = () => {
         <img 
           src="/lovable-uploads/e176984a-2f50-4512-862c-de219621bd47.png" 
           alt="VYBium Token" 
-          className="w-24 h-24 mx-auto mb-4 hover:rotate-12 transition-all duration-300" 
+          className="w-24 h-24 mx-auto mb-4 hover:rotate-12 rounded-full transition-all duration-300" 
         />
         <h3 className="text-xl font-orbitron font-bold mb-2">VYBium Wallet</h3>
         <p className="text-gray-400 mb-4">
