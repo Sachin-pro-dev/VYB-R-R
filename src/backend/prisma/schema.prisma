@@ -1,0 +1,220 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  walletAddress String         @unique
+  username      String?
+  handle        String?        @unique
+  bio           String?
+  avatar        String?
+  banner        String?
+  followers     Int            @default(0)
+  following     Int            @default(0)
+  tokenHolders  Int            @default(0)
+  isCreator     Boolean        @default(false)
+  
+  posts         Post[]
+  comments      Comment[]
+  likes         Like[]
+  followers     Follow[]       @relation("following")
+  following     Follow[]       @relation("follower")
+  token         CreatorToken?
+  nfts          NFT[]
+  tickets       Ticket[]
+  stakingPools  StakingPool[]
+  stakings      Staking[]
+  raffleEntries RaffleEntry[]
+  interests     Interest[]
+}
+
+model Follow {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  followerId String
+  followingId String
+  follower   User     @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  following  User     @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+}
+
+model Post {
+  id          String      @id @default(uuid())
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  content     String
+  image       String?
+  isTokenGated Boolean    @default(false)
+  likes       Int         @default(0)
+  comments    Int         @default(0)
+  shares      Int         @default(0)
+  reposts     Int         @default(0)
+  
+  author      User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId    String
+  
+  postLikes   Like[]
+  postComments Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content   String
+  
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    String
+  
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId  String
+}
+
+model Like {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    String
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+
+  @@unique([postId, userId])
+}
+
+model CreatorToken {
+  id           String   @id @default(uuid())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  tokenSymbol  String   @unique
+  tokenName    String
+  currentPrice Float
+  priceChange  Float
+  marketCap    Float
+  volume       Float
+  holders      Int
+  
+  creator      User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  creatorId    String   @unique
+  
+  stakingPool  StakingPool?
+}
+
+model NFT {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  name      String
+  image     String
+  
+  owner     User     @relation(fields: [ownerId], references: [id])
+  ownerId   String
+}
+
+model Interest {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  users       User[]
+}
+
+model TicketEvent {
+  id           String   @id @default(uuid())
+  createdAt    DateTime @default(now())
+  title        String
+  description  String?
+  creator      String
+  creatorHandle String
+  date         String
+  time         String
+  attendees    Int      @default(0)
+  maxAttendees Int
+  price        Float
+  image        String
+  tokenGated   Boolean  @default(false)
+  status       String   // 'upcoming', 'live', 'ended'
+  
+  tickets      Ticket[]
+}
+
+model Ticket {
+  id        String      @id @default(uuid())
+  createdAt DateTime    @default(now())
+  
+  event     TicketEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  eventId   String
+  
+  owner     User        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId   String
+
+  @@unique([eventId, ownerId])
+}
+
+model StakingPool {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  name        String
+  icon        String?
+  apy         Float
+  totalStaked Float    @default(0)
+  lockPeriod  String
+  minStake    Float
+  isCreatorToken Boolean @default(false)
+  tokenPrice  Float
+  
+  token       CreatorToken? @relation(fields: [tokenId], references: [id])
+  tokenId     String?      @unique
+  creator     User?       @relation(fields: [creatorId], references: [id])
+  creatorId   String?
+  
+  stakings    Staking[]
+}
+
+model Staking {
+  id        String      @id @default(uuid())
+  createdAt DateTime    @default(now())
+  amount    Float
+  rewards   Float       @default(0)
+  
+  pool      StakingPool @relation(fields: [poolId], references: [id], onDelete: Cascade)
+  poolId    String
+  
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+
+  @@unique([poolId, userId])
+}
+
+model Raffle {
+  id           String   @id @default(uuid())
+  createdAt    DateTime @default(now())
+  name         String
+  image        String
+  endTime      String
+  entryCost    Float
+  prize        String
+  
+  entries      RaffleEntry[]
+}
+
+model RaffleEntry {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  
+  raffle    Raffle   @relation(fields: [raffleId], references: [id], onDelete: Cascade)
+  raffleId  String
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+
+  @@unique([raffleId, userId])
+}
