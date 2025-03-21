@@ -4,7 +4,9 @@ VYB-R8R is a next-gen **SocialFi** platform built on **CoreBTC** that redefines 
 
 Whether you're a **creator, fan, or community builder**, VYB-R8R empowers you to **monetize engagement** in a way that traditional social platforms never could.  
 
-🔗 **Deployed Website:** https://vyb-r8r.vercel.app  
+🔗 **Deployed Website:** https://vyb-r8r.vercel.app
+
+📜 **Presentation:** https://www.canva.com/design/DAGiVkl1H80/p2sRDfHFOF3PBw4HbyoR0Q/edit?utm_content=DAGiVkl1H80&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton  
 
 
 
