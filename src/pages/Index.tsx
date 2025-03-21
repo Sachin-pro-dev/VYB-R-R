@@ -175,7 +175,7 @@ const Index: React.FC = () => {
             ))}
           </>
         ) : postsData && postsData.posts && postsData.posts.length > 0 ? (
-          postsData.posts.map((post: any) => (
+          postsData.posts.map((post) => (
             <PostCard 
               key={post.id} 
               post={{

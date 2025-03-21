@@ -19,7 +19,7 @@ const userProfile = {
 };
 
 const tokenData = {
-  tokenSymbol: 'ALEX',
+  tokenSymbol: 'ALEX@CR8R',
   tokenName: 'Alex Creator Token',
   currentPrice: 1.92,
   priceChange: -2.3,

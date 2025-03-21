@@ -60,7 +60,7 @@ export const useVybiumToken = () => {
       return formattedBalance;
     } catch (error) {
       console.error('Error fetching VYBium balance:', error);
-      toast.error('Failed to fetch VYBium balance');
+      // toast.error('Failed to fetch VYBium balance');
       return '0';
     } finally {
       setIsLoading(false);

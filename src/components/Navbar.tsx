@@ -1,10 +1,9 @@
-
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Bell, Search } from 'lucide-react';
-import ConnectWalletButton from './ConnectWalletButton';
-import { Button } from '@/components/ui/button';
-import VybiumBalanceDisplay from './vybium/VybiumBalanceDisplay';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Bell, Search } from "lucide-react";
+import ConnectWalletButton from "./ConnectWalletButton";
+import { Button } from "@/components/ui/button";
+import VybiumBalanceDisplay from "./vybium/VybiumBalanceDisplay";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Navbar: React.FC = () => {
@@ -19,14 +18,14 @@ const Navbar: React.FC = () => {
     // { name: 'Home', path: '/' },
     // { name: 'Explore', path: '/explore' },
     // { name: 'Create', path: '/create' },
-    { name: 'VYBium', path: '/vybium' },
+    { name: "VYBium", path: "/vybium" },
     // { name: 'Profile', path: '/profile' },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 py-3">
-        <div className="flex justify-between items-center">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 ">
+      <div className="max-w-7xl mx-auto px-4 py-3 ">
+        <div className="flex justify-between items-center ">
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
               <h1 className="text-2xl font-bold tracking-widest">
@@ -36,16 +35,16 @@ const Navbar: React.FC = () => {
               </h1>
             </Link>
           </div>
-{/* <ConnectButton/> */}
+          {/* <ConnectButton/> */}
           <div className="hidden md:flex space-x-8 ml-96 pl-60 ">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-3xl font-medium transition-all duration-300 hover:text-glow ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl border border-white/20 bg-white/10 text-white hover:bg-white/20 transition text-lg transition-all duration-300 hover:text-glow ${
                   location.pathname === link.path
-                    ? 'text-white border-b-2 border-white '
-                    : 'text-gray-300'
+                    ? "text-white border-b-2 border-white "
+                    : "text-gray-300"
                 }`}
               >
                 {link.name}
@@ -66,7 +65,11 @@ const Navbar: React.FC = () => {
 
           <div className="md:hidden flex items-center">
             <Button variant="ghost" size="icon" onClick={toggleMenu}>
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -81,8 +84,8 @@ const Navbar: React.FC = () => {
                 to={link.path}
                 className={`px-3 py-2 rounded-md text-base font-medium hover-scale ${
                   location.pathname === link.path
-                    ? 'bg-white/10 text-white'
-                    : 'text-gray-200'
+                    ? "bg-white/10 text-white"
+                    : "text-gray-200"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -93,10 +96,18 @@ const Navbar: React.FC = () => {
               <ConnectWalletButton />
               <div className="flex space-x-3">
                 <VybiumBalanceDisplay />
-                <Button variant="ghost" size="icon" className="rounded-full hover:bg-white/10">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full hover:bg-white/10"
+                >
                   <Search className="h-5 w-5" />
                 </Button>
-                <Button variant="ghost" size="icon" className="rounded-full hover:bg-white/10">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full hover:bg-white/10"
+                >
                   <Bell className="h-5 w-5" />
                 </Button>
               </div>

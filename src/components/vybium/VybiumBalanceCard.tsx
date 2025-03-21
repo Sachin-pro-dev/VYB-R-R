@@ -48,7 +48,7 @@ const VybiumBalanceCard: React.FC<VybiumBalanceCardProps> = ({
         </div>
         <div className="glass p-3 rounded-lg text-center">
           <p className="text-xs text-gray-400 mb-1">Network</p>
-          <p className="text-sm font-medium">Ethereum</p>
+          <p className="text-sm font-medium">CoreBTC</p>
         </div>
       </div>
     </div>
